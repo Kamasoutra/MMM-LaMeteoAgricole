@@ -1,0 +1,61 @@
+.weather .current {
+  margin-bottom: 10px;
+}
+
+.weather .current > div {
+  margin-bottom: 6px;
+}
+
+.weather .current .weathericon {
+  font-size: 65px;
+  line-height: 65px;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.weather .extra {
+  margin-top: 4px;
+}
+
+.weather .extra .wi {
+  margin-right: 2px;
+}
+
+.weather .forecast-title {
+  margin-top: 14px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 2px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.weather .forecast {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.weather .forecast tr td {
+  padding: 2px 6px;
+  vertical-align: middle;
+}
+
+.weather .forecast .day {
+  min-width: 52px;
+}
+
+.weather .forecast .weathericon {
+  font-size: 20px;
+  line-height: 20px;
+  width: 28px;
+  display: inline-block;
+  text-align: center;
+}
+
+.weather .forecast .align-right {
+  text-align: right;
+}
+
+.weather .forecast .align-center {
+  text-align: center;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "MMM-LameteoAgricole",
+  "version": "1.0.0",
+  "description": "MagicMirror² module – météo française via lameteoagricole.net (sans clé API)",
+  "main": "MMM-LameteoAgricole.js",
+  "keywords": ["magicmirror", "magicmirror2", "weather", "meteo", "france"],
+  "author": "Jean-Pierre Palik <kama@palik.fr>",
+  "license": "MIT",
+  "dependencies": {}
+}
