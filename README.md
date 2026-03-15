@@ -4,7 +4,7 @@ Module [MagicMirror²](https://magicmirror.builders/) affichant la météo fran�
 
 Données scrappées directement depuis le site, avec icônes Weather Icons natives de MagicMirror².
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.jpg)
 
 ## Fonctionnalités
 
