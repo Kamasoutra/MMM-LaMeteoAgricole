@@ -175,11 +175,16 @@ module.exports = NodeHelper.create({
     const headers = [];
     const thRe = /<th>([\s\S]*?)<\/th>/g;
     let m;
+    let lastHour = -1;
+    let dayOffset = 0;
     while ((m = thRe.exec(html)) !== null) {
       const text = this.stripTags(m[1]);
       const hourM = /(\d+)h/.exec(text);
       if (hourM) {
-        headers.push({ label: text.trim(), hour: parseInt(hourM[1]) });
+        const h = parseInt(hourM[1]);
+        if (h < lastHour) dayOffset++; // passage minuit → jour suivant
+        lastHour = h;
+        headers.push({ label: text.trim(), hour: h, dayOffset });
       }
     }
 
@@ -188,8 +193,9 @@ module.exports = NodeHelper.create({
     let count = 0;
     while ((m = tdRe.exec(html)) !== null && count < headers.length) {
       hours.push({
-        label: headers[count].label,
-        hour:  headers[count].hour,
+        label:     headers[count].label,
+        hour:      headers[count].hour,
+        dayOffset: headers[count].dayOffset,
         ...this.parseHourCell(m[1])
       });
       count++;

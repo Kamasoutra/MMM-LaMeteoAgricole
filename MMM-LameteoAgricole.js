@@ -162,8 +162,9 @@ Module.register("MMM-LameteoAgricole", {
     }
 
     // ── Prévisions heure par heure (à partir de l'heure prochaine) ───────
-    const nextHour = new Date().getHours() + 1;
-    const futureHourly = this.hourly.filter(h => h.hour >= nextHour);
+    const nowHour = new Date().getHours();
+    // dayOffset > 0 = heure du lendemain ou au-delà → toujours incluse
+    const futureHourly = this.hourly.filter(h => h.dayOffset > 0 || h.hour > nowHour);
     const hourlyRows = futureHourly.slice(0, this.config.showHourlyRows);
     if (hourlyRows.length > 0) {
       wrapper.appendChild(this.el("div", "forecast-title small dimmed", "HEURE PAR HEURE"));
@@ -172,7 +173,8 @@ Module.register("MMM-LameteoAgricole", {
         const tr = document.createElement("tr");
         // Heure
         const tdH = this.el("td", "day");
-        tdH.textContent = (h.label || "").replace(/.*?(\d+h)$/, "$1");
+        const hLabel = (h.label || "").replace(/.*?(\d+h)$/, "$1");
+        tdH.textContent = h.dayOffset > 0 ? `dem. ${hLabel}` : hLabel;
         tr.appendChild(tdH);
         // Icône
         const tdI = this.el("td", "");
