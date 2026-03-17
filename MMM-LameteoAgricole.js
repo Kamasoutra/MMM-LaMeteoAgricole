@@ -28,6 +28,19 @@ Module.register("MMM-LameteoAgricole", {
   scheduleFetch() {
     this.fetchMeteo();
     setInterval(() => this.fetchMeteo(), this.config.updateInterval);
+    this.scheduleHourlyRefresh();
+  },
+
+  scheduleHourlyRefresh() {
+    const now = new Date();
+    const msUntilNextHour =
+      (60 - now.getMinutes()) * 60 * 1000
+      - now.getSeconds() * 1000
+      - now.getMilliseconds();
+    setTimeout(() => {
+      this.fetchMeteo();
+      setInterval(() => this.fetchMeteo(), 60 * 60 * 1000);
+    }, msUntilNextHour);
   },
 
   fetchMeteo() {
@@ -174,7 +187,7 @@ Module.register("MMM-LameteoAgricole", {
         // Heure
         const tdH = this.el("td", "day");
         const hLabel = (h.label || "").replace(/.*?(\d+h)$/, "$1");
-        tdH.textContent = h.dayOffset > 0 ? `dem. ${hLabel}` : hLabel;
+        tdH.textContent = hLabel;
         tr.appendChild(tdH);
         // Icône
         const tdI = this.el("td", "");
