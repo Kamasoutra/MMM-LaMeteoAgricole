@@ -102,7 +102,7 @@ module.exports = NodeHelper.create({
 
   parseDayCell(td) {
     const iconM   = /Weather\/numbers\/(\d+)\.svg" alt="([^"]*)"/.exec(td);
-    const tmaxM   = /<span class="fw-bold fs-4 text-warning">(-?\d+)/.exec(td);
+    const tmaxM   = /<span class="fw-bold fs-4[^"]*">(-?\d+)/.exec(td);
     const tminM   = /min(?:&nbsp;|\s)(-?\d+)°/.exec(td);
     const pmmM    = /<span class="fw-bold">(\d+(?:\.\d+)?)<\/span><span class="small fw-normal">mm/.exec(td);
     const pprobM  = /<span class="small text-shade-3 noModal">(\d+)%/.exec(td);
