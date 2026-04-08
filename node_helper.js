@@ -125,7 +125,7 @@ module.exports = NodeHelper.create({
 
   parseHourCell(td) {
     const iconM   = /Weather\/numbers\/(\d+)\.svg" alt="([^"]*)"/.exec(td);
-    const tempM   = /<span class="fw-bold fs-4 text-warning">(-?\d+)/.exec(td);
+    const tempM   = /<span class="fw-bold fs-4[^"]*">(-?\d+)/.exec(td);
     const feelsM  = /noModal">(-?\d+)°<\/span>/.exec(td);
     const pmmM    = /<span class="fw-bold">(\d+(?:\.\d+)?)<\/span><span class="small fw-normal">mm/.exec(td);
     const pprobM  = /<span class="small text-shade-3 noModal">(\d+)%/.exec(td);
